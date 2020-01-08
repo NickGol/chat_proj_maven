@@ -1,0 +1,39 @@
+.inp {
+	-fx-position: relative;
+	-fx-margin: auto;
+	-fx-width: 100%;
+	-fx-max-width: 280px;
+  .label
+    -fx-position: absolute;
+    -fx-top: 16px;
+    -fx-left: 0;
+    -fx-font-size: 16px;
+    -fx-color: #9098A9;
+    -fx-font-weight: 500;
+    -fx-transform-origin: 0 0;
+    -fx-transition: all .2s ease;
+  .border
+    -fx-position: absolute;
+    -fx-bottom: 0;
+    -fx-left: 0;
+    -fx-height: 2px;
+    -fx-width: 100%;
+    -fx-background #0077FF;
+    -fx-transform: scaleX(0);
+    -fx-transform-origin: 0 0;
+    -fx-transition: all .15s ease;
+  .input
+	-fx-webkit-appearance: none;
+    -fx-width: 100%;
+    -fx-border: 0;
+    -fx-font-family: inherit;
+    -fx-padding: 12px 0;
+    -fx-height: 48px;
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+    -fx-border-bottom: 2px solid #C8CCD4;
+    -fx-background: none;
+    -fx-border-radius: 0;
+    -fx-color: #223254;
+    -fx-transition: all .15s ease;
+}

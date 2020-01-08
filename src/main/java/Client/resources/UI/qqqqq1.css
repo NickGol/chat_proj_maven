@@ -1,0 +1,196 @@
+/*.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0 ;
+}
+.text-field:hover {
+    -fx-background-color: green;
+}*/
+
+.text-field_my {
+    -fx-background-color: none;/*derive(skyblue, 75%);*/
+    -fx-background-radius: 0;
+	-fx-border-color: transparent transparent #d7dcd7 transparent;
+    -fx-border-insets: 0;
+    -fx-border-width: 1; /* border width 3px */
+	-fx-prompt-text-fill: #787878;
+	-fx-prompt-Text: "Пароль";
+	-fx-font-size: 16;
+	-fx-font-family: "Segoe UI";
+	-fx-pref-width: 350;
+	-fx-pref-height: 45;
+	
+}
+.text-field_my:focused {
+    /*-fx-background-color: transparent;*/
+	/*-fx-background-color: none;
+	-fx-outline: none;*/
+	-fx-background-color: none;
+    -fx-background-radius: 0;
+	-fx-border-color: transparent transparent #57b359 transparent;
+    -fx-border-insets: 0;
+    -fx-border-width: 1; /* border width 3px */
+}
+.text-field_my_error {
+    /*-fx-background-color: transparent;*/
+	/*-fx-background-color: none;
+	-fx-outline: none;*/
+	-fx-background-color: none;
+    -fx-background-radius: 0;
+	-fx-border-color: transparent transparent #f0535d transparent;
+    -fx-border-insets: 0;
+    -fx-border-width: 1; /* border width 3px */
+}
+.text-field_my_error:focused {
+    /*-fx-background-color: transparent;*/
+	/*-fx-background-color: none;
+	-fx-outline: none;*/
+	-fx-background-color: none;
+    -fx-background-radius: 0;
+	-fx-border-color: transparent transparent #f0535d transparent;
+    -fx-border-insets: 0;
+    -fx-border-width: 1; /* border width 3px */
+}
+/*.text-field_my:hover {
+    -fx-background-color: transparent;
+}*/
+
+.label_error {
+	-fx-text-fill: #f0535d;
+	-fx-font-size: 12;
+	-fx-font-family: "Segoe UI";
+	-fx-pref-width: 450;
+	-fx-alignment: center;
+}
+
+.label_message {
+	-fx-text-fill: #57b359;
+}
+
+.button_next {
+	-fx-background-color: #57b259;
+	-fx-text-fill: #ffffff;
+	-fx-font-family: "Segoe UI";
+	-fx-font-size: 14;
+	-fx-pref-width: 150;
+	-fx-pref-height: 30;
+	-fx-min-width: 0.5;
+	-fx-min-height : 0.1;
+	-fx-border-radius: 5;
+}
+
+.button_next:pressed {
+	-fx-background-color: #71bc78;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 14;
+	-fx-pref-width: 150;
+	-fx-pref-height: 30;
+	-fx-border-radius: 5;
+}
+
+
+.custom-node {
+    -fx-background-color: skyblue, derive(skyblue, 25%), derive(skyblue, 50%), derive(skyblue, 75%); /* set background to skyblue */
+    -fx-background-insets: 20, 40, 60, 80;
+    -fx-border-color: red, yellow, green, blue; /* set border to red*/
+    -fx-border-insets: 20, 40, 60, 80;
+    -fx-border-width: 3; /* border width 3px */
+}
+
+.custom-node1 {
+    -fx-background-color: skyblue, derive(skyblue, 25%), derive(skyblue, 50%), derive(skyblue, 75%); /* set background to skyblue */
+    -fx-background-insets: 20, 40, 60, 80;
+    -fx-background-radius: 20 0 0 0, 0 20 0 0, 0 0 20 0, 0 0 0 20;
+    -fx-border-color: red, yellow, green, blue; /* set border to red*/
+    -fx-border-insets: 20, 40, 60, 80;
+    -fx-border-radius: 20 0 0 0, 0 20 0 0, 0 0 20 0, 0 0 0 20;
+    -fx-border-width: 3; /* border width 3px */
+}
+
+.custom-node2 {
+    -fx-background-color: skyblue, derive(skyblue, 25%), derive(skyblue, 50%), derive(skyblue, 75%); /* set background to skyblue */
+    -fx-background-insets: 20, 40, 60, 80;
+/*    -fx-background-radius: 20 0 0 0, 0 20 0 0, 0 0 20 0, 0 0 0 20;*/
+    -fx-border-color: red transparent red transparent, yellow, transparent green transparent green, blue transparent blue transparent; /* set border to red*/
+    -fx-border-insets: 20, 40, 60, 80;
+/*    -fx-border-radius: 20 0 0 0, 0 20 0 0, 0 0 20 0, 0 0 0 20;*/
+    -fx-border-width: 3; /* border width 3px */
+}
+
+.custom-node5 {
+    -fx-background-color: skyblue, derive(skyblue, 25%); /* set background to skyblue */
+    -fx-background-insets: 0, 20;
+    -fx-background-radius: 10, 0;
+    -fx-border-color: blue, red;
+    -fx-border-style: segments(40, 4, 20, 4) phase 12 line-cap butt, segments(26, 4, 26, 4) phase 4 line-cap round;
+    -fx-border-insets: 0, 20 22 20 22;
+    -fx-border-radius: 10, 0;
+    -fx-border-width: 5, 5 0 5 0;
+}
+
+.btn {
+  -fx-background-color: #f4511e;
+  -fx-border: none;
+  -fx-color: white;
+  -fx-padding: 16px 32px;
+  -fx-text-align: center;
+  -fx-font-size: 16px;
+  -fx-margin: 4px 2px;
+  -fx-opacity: 0.6;
+  -fx-transition: .9s;
+}
+
+.btn:hover {-fx-opacity: 1}
+
+
+.zoom {
+  -fx-padding: 50px;
+  -fx-background-color: green;
+  -fx-animation-time: 2s; /* Animation */
+  -fx-width: 200px;
+  -fx-height: 200px;
+  -fx-margin: auto;
+}
+
+.zoom:hover {
+    -fx-animation-time: 2;
+	-fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+	-fx-translate-y: -50px;
+	-fx-animation-time: 2;
+}
+
+.user_item {
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.user_item:hover {
+    -fx-background-color: #f3f5f8;
+}
+
+
+
+.round-lbl {
+    -fx-background-color: #FE7A79;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.text-user_name {
+    -fx-font-size: 12pt;
+}
+
+.text-user_interaction {
+    -fx-text-fill: #838690;
+    -fx-font-size: 12pt;
+}
+
+.text-user_timeOfInterconnection {
+    -fx-padding: 3pt;
+    -fx-text-fill: #838690;
+    -fx-font-size: 9pt;
+}
