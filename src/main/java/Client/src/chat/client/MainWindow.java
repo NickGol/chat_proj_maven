@@ -55,7 +55,7 @@ public class MainWindow extends Application {
     private Scene createScene() {
         // Use a border pane as the root for scene
         border = new BorderPane();
-        UserFriendItemInfo userFriendItemInfo = new UserFriendItemInfo("usersPhoto\\512.png",
+        UserFriendItemInfo userFriendItemInfo = new UserFriendItemInfo("usersPhoto/512.png",
                 "В сети", "Пользователь Пользователь", "Голосовое сообщение",
                 "20.20.2020");
         userFriendsItemsContainer = new VBox();
@@ -110,7 +110,7 @@ public class MainWindow extends Application {
     }
 
     private ImageView testImageWork() {
-        Image image1 = new Image("usersPhoto\\512.png",
+        Image image1 = new Image("usersPhoto/512.png",
                 200, 200, true, true);
         ImageView photo = new ImageView();
         photo.setImage(image1);

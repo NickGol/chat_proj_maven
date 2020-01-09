@@ -162,10 +162,15 @@
 
 .user_item {
     -fx-padding: 0.0 0.0 0.0 0.0;
+    -fx-background-height: 70;
+    -fx-max-height: 70;
+    -fx-alignment: center-left;
 }
 
 .user_item:hover {
-    -fx-background-color: #f3f5f8;
+    /*-fx-background-color: #f3f5f8;*/
+    -fx-background-color: skyblue;
+
 }
 
 
@@ -178,19 +183,25 @@
     -fx-pref-height: 16;
     -fx-alignment: center;
     -fx-text-fill: white;
+    -fx-font-size: 10px;
 }
 
 .text-user_name {
-    -fx-font-size: 12pt;
+    -fx-font-size: 14px;
 }
 
 .text-user_interaction {
     -fx-text-fill: #838690;
-    -fx-font-size: 12pt;
+    -fx-font-size: 14px;
+    -fx-alignment: bottom-center;
 }
 
 .text-user_timeOfInterconnection {
-    -fx-padding: 3pt;
+    -fx-padding: 2pt;
     -fx-text-fill: #838690;
     -fx-font-size: 9pt;
+}
+
+.hbox-user_item {
+    -fx-height: 70;
 }

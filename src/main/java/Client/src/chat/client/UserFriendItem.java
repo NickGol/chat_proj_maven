@@ -34,7 +34,7 @@ public class UserFriendItem {
 
     private void initUserFriendItem(UserFriendItemInfo userFriendItemInfo) {
         userPhoto = loadUserPhoto( userFriendItemInfo.getUserPhotoPath() );
-        userStatus = new Label("10"/* userFriendItemInfo.getUserStatus()*/ );
+        userStatus = new Label("50"/* userFriendItemInfo.getUserStatus()*/ );
         userPhotoAndStatusContainer = new StackPane(userPhoto, userStatus);
         userName = new Label( userFriendItemInfo.getUserName() );
         interconnectionInfo = new Label( userFriendItemInfo.getInterconnectionInfo() );
@@ -67,6 +67,7 @@ public class UserFriendItem {
         userName.getStyleClass().add("text-user_name");
         interconnectionInfo.getStyleClass().add("text-user_interaction");
         timeOfInterconnection.getStyleClass().add("text-user_timeOfInterconnection");
+        //userFriendContainer.getStyleClass().add("hbox-user_item");
 
     }
 }

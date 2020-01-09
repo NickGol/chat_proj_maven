@@ -1,6 +1,6 @@
 package chat.client;
 
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
 
 import javax.annotation.*;
 
@@ -78,7 +78,7 @@ public class Authorization {
      * @param password
      * @return
      */
-    public boolean checkPairLoginPassword(@NotNull String login, @NotNull String password) {
+    public boolean checkPairLoginPassword(/*@NotNull*/ String login, /*@NotNull*/ String password) {
         return password.equals( userInfo.get(login) );
     }
 }
