@@ -60,7 +60,7 @@ public class MainWindow extends Application {
                 "20.20.2020");
         userFriendsItemsContainer = new VBox();
         UserFriendItem userFriendItem = new UserFriendItem();
-        userFriendItem.createUserFriendItem(userFriendItemInfo);
+        //userFriendItem.createUserFriendItem(userFriendItemInfo);
         border.setLeft(userFriendsItemsContainer);
         userFriendsItemsContainer.getChildren().add(userFriendItem.createUserFriendItem(userFriendItemInfo));
         userFriendsItemsContainer.getStylesheets().add("UI/qqqqq1.css");

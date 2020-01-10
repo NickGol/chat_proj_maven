@@ -161,9 +161,9 @@
 }
 
 .user_item {
-    -fx-padding: 0.0 0.0 0.0 0.0;
-    -fx-background-height: 70;
-    -fx-max-height: 70;
+    -fx-padding: 5 0 5 0;
+    -fx-background-height: 50;
+    -fx-max-height: 50;
     -fx-alignment: center-left;
 }
 
@@ -172,8 +172,6 @@
     -fx-background-color: skyblue;
 
 }
-
-
 
 .round-lbl {
     -fx-background-color: #FE7A79;
@@ -186,22 +184,34 @@
     -fx-font-size: 10px;
 }
 
+.empty-lbl {
+ -fx-pref-height: 1000;
+}
+
 .text-user_name {
     -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    /*-fx-background-color: green;*/
 }
 
 .text-user_interaction {
     -fx-text-fill: #838690;
     -fx-font-size: 14px;
-    -fx-alignment: bottom-center;
+    -fx-alignment: center-left;
+    /*-fx-background-color: green;*/
 }
 
 .text-user_timeOfInterconnection {
-    -fx-padding: 2pt;
+    -fx-padding: 3px;
     -fx-text-fill: #838690;
-    -fx-font-size: 9pt;
+    -fx-font-size: 11px;
 }
 
-.hbox-user_item {
-    -fx-height: 70;
+.vbox123 {
+    -fx-alignment: center-left;
+    /*-fx-background-color: green;*/
+    -fx-pref-height: 1000;
+}
+.vbox123:hover {
+    /*-fx-background-color: red;*/
 }
