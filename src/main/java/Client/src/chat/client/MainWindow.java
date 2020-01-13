@@ -1,28 +1,20 @@
 package chat.client;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.net.MalformedURLException;
 
 
 public class MainWindow extends Application {
@@ -32,6 +24,7 @@ public class MainWindow extends Application {
     Scene scene;
     BorderPane border;
     VBox userFriendsItemsContainer;
+    ScrollPane userFriendsItemsScrollPane;
 
 
 
@@ -39,7 +32,7 @@ public class MainWindow extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         scene = createScene();
-        scene.getStylesheets().add("UI/qqqqq1.css");
+        scene.getStylesheets().add("UI/Styles.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Отладка информации отображения о пользователе");
         primaryStage.setWidth(800);
@@ -59,12 +52,16 @@ public class MainWindow extends Application {
                 "В сети", "Пользователь Пользователь", "Голосовое сообщение",
                 "20.20.2020");
         userFriendsItemsContainer = new VBox();
+        userFriendsItemsScrollPane = new ScrollPane(userFriendsItemsContainer);
         UserFriendItem userFriendItem = new UserFriendItem();
         //userFriendItem.createUserFriendItem(userFriendItemInfo);
-        border.setLeft(userFriendsItemsContainer);
-        userFriendsItemsContainer.getChildren().add(userFriendItem.createUserFriendItem(userFriendItemInfo));
-        userFriendsItemsContainer.getStylesheets().add("UI/qqqqq1.css");
-        userFriendsItemsContainer.getStyleClass().add("user_item");
+        border.setLeft(userFriendsItemsScrollPane);
+        for (int i = 0; i <15 ; i++) {
+            userFriendsItemsContainer.getChildren().add(userFriendItem.createUserFriendItem(userFriendItemInfo));
+        }
+
+        //userFriendsItemsContainer.getStylesheets().add("UI/Styles.css");
+        //userFriendsItemsContainer.getStyleClass().add("user_item");
         /*for(int i=0; i<10; i++) {
             hBox.getChildren().add(addUserFriendItem());
             hBox.getChildren().add(addUserNameAndStatus());
@@ -101,7 +98,7 @@ public class MainWindow extends Application {
         photo.setClip(circle);
 
         userFriendItemBox.getChildren().add(photo);
-        //userFriendItemBox.getStylesheets().add("UI/qqqqq1.css");
+        //userFriendItemBox.getStylesheets().add("UI/Styles.css");
         userFriendItemBox.getStyleClass().add("user_item");
         System.out.println( photo.getStyleClass() );
         userFriendItemBox.setAlignment(Pos.CENTER_LEFT);
