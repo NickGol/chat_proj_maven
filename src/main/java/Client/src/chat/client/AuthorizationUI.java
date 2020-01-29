@@ -84,7 +84,7 @@ public class AuthorizationUI extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("authorization.fxml"));
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("UI/qqqqq1.css");
+        //scene.getStylesheets().add("UI/Styles.css");
         primaryStage.setTitle("Authorization");
         primaryStage.setScene(scene);
         //primaryStage.setResizable(false);

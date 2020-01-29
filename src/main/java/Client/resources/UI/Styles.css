@@ -197,12 +197,11 @@
 .text-user_interaction {
     -fx-text-fill: #838690;
     -fx-font-size: 14px;
-    /*-fx-font-family: "Arial";*/
     -fx-alignment: center-left;
     /*-fx-background-color: green;*/
 }
 
-.text-user_timeOfInteraction {
+.text-user_timeOfInterconnection {
     -fx-padding: 3px;
     -fx-text-fill: #838690;
     -fx-font-size: 11px;

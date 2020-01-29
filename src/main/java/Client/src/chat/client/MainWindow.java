@@ -23,9 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
-import java.util.List;
 
-import javafx.stage.FileChooser;
 
 public class MainWindow extends Application {
     public static void main(String[] args) {
@@ -34,18 +32,11 @@ public class MainWindow extends Application {
     Scene scene;
     BorderPane border;
     VBox userFriendsItemsContainer;
-    Stage primaryStage;
-    FileChooser fileChooser = new FileChooser();
 
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        this.primaryStage = primaryStage;
-
-            List<File> selectedFile = fileChooser.showOpenMultipleDialog(null);
-
 
         scene = createScene();
         scene.getStylesheets().add("UI/qqqqq1.css");
@@ -85,6 +76,7 @@ public class MainWindow extends Application {
     }
 
     private HBox addUserFriendItem() {
+
         System.out.println( System.getProperty("java.class.path") );
         HBox userFriendItemBox = new HBox();
         userFriendItemBox.setMinHeight(70);

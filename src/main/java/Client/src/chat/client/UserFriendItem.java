@@ -15,14 +15,14 @@ public class UserFriendItem {
 
     HBox userFriendContainer;
     StackPane userPhotoAndStatusContainer;
-    ImageView userPhoto;
-    Label userStatus;
-    VBox userNameAndInterconnectionContainer;
-    Label userName;
-    Label emptyBox;
-    Label interactionInfo;
+    /**/ImageView userPhoto;
+    /**/Label userStatus;
+    VBox userNameAndInteractionContainer;
+    /**/Label userName;
+    /**/Label emptyBox;
+    /**/Label interactionInfo;
     VBox extraInterconnectionDataContainer;
-    Label timeOfInteraction;
+    /**/Label timeOfInterconnection;
 
     public HBox createUserFriendItem(UserFriendItemInfo userFriendItemInfo) {
         initUserFriendItem(userFriendItemInfo);
@@ -36,13 +36,11 @@ public class UserFriendItem {
         userName = new Label( userFriendItemInfo.getUserName() );
         emptyBox = new Label();
         interactionInfo = new Label( userFriendItemInfo.getInterconnectionInfo() );
-        userNameAndInterconnectionContainer = new VBox(userName, emptyBox, interactionInfo);
-        //userNameAndInterconnectionContainer.getChildren().add(userName);
-        timeOfInteraction = new Label( userFriendItemInfo.getTimeOfInterconnection() );
-        extraInterconnectionDataContainer = new VBox(timeOfInteraction, GlyphsDude.createIcon(FontAwesomeIcon.LIST, "12pt"));
+        userNameAndInteractionContainer = new VBox(userName, emptyBox, interactionInfo);
+        timeOfInterconnection = new Label( userFriendItemInfo.getTimeOfInterconnection() );
+        extraInterconnectionDataContainer = new VBox(timeOfInterconnection, GlyphsDude.createIcon(FontAwesomeIcon.LIST, "12pt"));
         userFriendContainer = new HBox( userPhotoAndStatusContainer,
-                userNameAndInterconnectionContainer, extraInterconnectionDataContainer);
-        //GlyphsDude.createIcon(FontAwesomeIcon.NAVICON, "hello");
+                userNameAndInteractionContainer, extraInterconnectionDataContainer);
         useDefaultViewSettings();
     }
 
@@ -56,22 +54,19 @@ public class UserFriendItem {
     }
 
     private void useDefaultViewSettings() {
-        //userNameAndInterconnectionContainer.getStylesheets().add("UI/qqqqq1.css");
+        //userNameAndInterconnectionContainer.getStylesheets().add("UI/Styles.css");
         //List<String> list = userNameAndInterconnectionContainer.getStylesheets();
-        //userPhotoAndStatusContainer.setPrefSize(50, 50);
-        //userStatus.getStylesheets().add("UI/qqqqq1.css");
-        userStatus.getStyleClass().add("round-lbl");
-        userPhotoAndStatusContainer.setMargin(userStatus, new Insets(30, 0, 0, 30));
+        userStatus.getStylesheets().add("UI/Styles.css");
+        userFriendContainer.getStyleClass().add("user-friend-item");
+        //userStatus.getStyleClass().add("user-friend-item-photo");
+        userPhotoAndStatusContainer.getStyleClass().add("user-friend-item-stack-pane");
+        userStatus.getStyleClass().add("user-friend-item-status");
 
-        userName.getStyleClass().add("text-user_name");
-        emptyBox.getStyleClass().add("empty-lbl");
-        interactionInfo.getStyleClass().add("text-user_interaction");
-        timeOfInteraction.getStyleClass().add("text-user_timeOfInteraction");
-        userFriendContainer.getStyleClass().add("hbox-user_item");
-
-        System.out.println( interactionInfo.getFont() );
-
-        userNameAndInterconnectionContainer.getStyleClass().add("vbox123");
+        userName.getStyleClass().add("user-friend-item-user-name");
+        emptyBox.getStyleClass().add("user-friend-item-empty-lbl");
+        interactionInfo.getStyleClass().add("user-friend-item-user-interactionЫS");
+        timeOfInterconnection.getStyleClass().add("user-friend-item-timeOfInteraction");
+        
         //VBox.setVgrow(userNameAndInterconnectionContainer, Priority.ALWAYS);
 
     }
