@@ -18,11 +18,13 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
+import java.util.List;
 
 
 public class MainWindow extends Application {
@@ -38,6 +40,8 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        FileChooser fileChooser = new FileChooser();
+        List<File> prawnXMLFilesNew = fileChooser.showOpenMultipleDialog(null);
         scene = createScene();
         scene.getStylesheets().add("UI/qqqqq1.css");
         primaryStage.setScene(scene);
