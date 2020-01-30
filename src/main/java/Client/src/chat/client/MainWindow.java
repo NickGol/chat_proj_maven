@@ -40,8 +40,8 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FileChooser fileChooser = new FileChooser();
-        List<File> prawnXMLFilesNew = fileChooser.showOpenMultipleDialog(null);
+        //FileChooser fileChooser = new FileChooser();
+        //List<File> prawnXMLFilesNew = fileChooser.showOpenMultipleDialog(null);
         scene = createScene();
         scene.getStylesheets().add("UI/qqqqq1.css");
         primaryStage.setScene(scene);
@@ -52,7 +52,7 @@ public class MainWindow extends Application {
         primaryStage.setMinHeight(535);
         //primaryStage.setMaximized(true);
         //primaryStage.getScene().getStylesheets().add("polynomial/Styles.css");
-
+        AddDocumentsToPanel addDocumentsToPanel = new AddDocumentsToPanel();
         primaryStage.show();
     }
 
