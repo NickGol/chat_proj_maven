@@ -2,6 +2,7 @@ package chat.client;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class MainWindow extends Application {
@@ -78,6 +80,28 @@ public class MainWindow extends Application {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        flowPane.setHgap(5);
+        flowPane.setVgap(5);
+        flowPane.setUserData( new FileData("qqqqq") );
+        flowPane.setOnMouseReleased( (value)-> {
+            System.out.println(value);
+            //value.getPickResult().
+            if( value.getTarget() instanceof ImageView) {
+                ImageView imageView = (ImageView)value.getTarget();
+                FileData fileData = (FileData) imageView.getUserData();
+                System.out.println(fileData);
+            }
+            Node node = (Node)value.getTarget();
+            while( node.getUserData() == null && node != null ) {
+                node = node.getParent();
+            }
+            if(node != null) {
+                FileData fileData = (FileData)node.getUserData();
+                fileData.process();
+            }
+
+            System.out.println(value);
+        });
         //border.setCenter(addLineChartToCenter());
         return new Scene(border);
     }

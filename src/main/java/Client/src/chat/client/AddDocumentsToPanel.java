@@ -1,13 +1,14 @@
 package chat.client;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -30,13 +31,17 @@ public class AddDocumentsToPanel {
 
     }
 
-    public List<ImageView> selectFiles() throws MalformedURLException {
-        List<ImageView> list = new LinkedList<>();
+    public List<VBox> selectFiles() throws MalformedURLException {
+        List<VBox> list = new LinkedList<>();
+        VBox vBox = null;
         fileChooser = new FileChooser();
         selectedFiles = fileChooser.showOpenMultipleDialog(null);
         for( File file : selectedFiles) {
             //selectImageToShow(file);
-            list.add(  loadUserPhoto( selectImageToShow(file) )  );
+            vBox = wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) );
+            vBox.setUserData(  new FileData( file.toURI().toURL(), file.getName() )  );
+            list.add( vBox );
+            //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
         }
         return list;
     }
@@ -49,6 +54,7 @@ public class AddDocumentsToPanel {
         System.out.println( image.getHeight() );
         System.out.println( image.getWidth() );
         ImageView photo = new ImageView(image);
+        //photo.setUserData( new FileData( userPhotoPath, "qqqqq") );
         return photo;
     }
 
@@ -72,6 +78,25 @@ public class AddDocumentsToPanel {
 
     }
 
+    private VBox wrapInVBox(File file, ImageView fileIcon) {
+        VBox vBox = new VBox();
+        vBox.setMaxWidth(105);
+        vBox.getStylesheets().add("UI/Styles.css");
+        vBox.getStyleClass().add("user-file-item");
+        vBox.setAlignment(Pos.TOP_CENTER);
+        /*Label fileName = new Label(file.getName());
+        //fileName.setMaxWidth();
+        //fileName.setPrefWidth(10);
+        fileName.setWrapText(true);
+        //fileName.setStyle("-fx-background-color : green");
+        vBox.getChildren().addAll(fileIcon, fileName);*/
+
+        Label label = new Label(file.getName(), fileIcon);
+        label.setContentDisplay(ContentDisplay.TOP);
+        label.setWrapText(true);
+        vBox.getChildren().add(label);
+        return vBox;
+    }
     private void readRegisteredTypesOfDocuments() {
 
     }
