@@ -9,11 +9,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class AddDocumentsToPanel {
 
@@ -34,12 +39,25 @@ public class AddDocumentsToPanel {
     public List<VBox> selectFiles() throws MalformedURLException {
         List<VBox> list = new LinkedList<>();
         VBox vBox = null;
+        Path path = null;
         fileChooser = new FileChooser();
         selectedFiles = fileChooser.showOpenMultipleDialog(null);
         for( File file : selectedFiles) {
+            BasicFileAttributes attr;
+            Map<String, Object> map = null;
+
+            path = file.toPath();
+            try {
+                attr = Files.readAttributes(path, BasicFileAttributes.class);
+                //map = Files.readAttributes(path, String.valueOf(String.class));
+                System.out.println(String.valueOf(String.class));
+                System.out.println( attr.creationTime() );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             //selectImageToShow(file);
             vBox = wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) );
-            vBox.setUserData(  new FileData( file.toURI().toURL(), file.getName(), file )  );
+            vBox.setUserData(  new FileData( path, file )  );
             list.add( vBox );
             //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
         }
@@ -50,7 +68,7 @@ public class AddDocumentsToPanel {
 
         //File file = new File(userPhotoPath);
         //Image image = new Image("file:/" + userPhotoPath);
-        Image image = new Image(userPhotoPath.toString(), 100, 100, true, true);
+        Image image = new Image(userPhotoPath.toString(), 75, 75, false, true);
         System.out.println( image.getHeight() );
         System.out.println( image.getWidth() );
         ImageView photo = new ImageView(image);

@@ -82,17 +82,17 @@ public class MainWindow extends Application {
         }
         flowPane.setHgap(5);
         flowPane.setVgap(5);
-        flowPane.setUserData( new FileData("qqqqq") );
+        //flowPane.setUserData( new FileData("qqqqq") );
         flowPane.setOnMouseReleased( (value)-> {
             System.out.println(value);
             //value.getPickResult().
-            if( value.getTarget() instanceof ImageView) {
+            /*if( value.getTarget() instanceof ImageView) {
                 ImageView imageView = (ImageView)value.getTarget();
                 FileData fileData = (FileData) imageView.getUserData();
                 System.out.println(fileData);
-            }
+            }*/
             Node node = (Node)value.getTarget();
-            while( node.getUserData() == null && node != null ) {
+            while( node != null && node.getUserData() == null ) {
                 node = node.getParent();
             }
             if(node != null) {
