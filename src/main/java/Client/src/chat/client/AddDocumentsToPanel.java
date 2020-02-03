@@ -39,7 +39,7 @@ public class AddDocumentsToPanel {
         for( File file : selectedFiles) {
             //selectImageToShow(file);
             vBox = wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) );
-            vBox.setUserData(  new FileData( file.toURI().toURL(), file.getName() )  );
+            vBox.setUserData(  new FileData( file.toURI().toURL(), file.getName(), file )  );
             list.add( vBox );
             //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
         }
