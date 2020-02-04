@@ -97,7 +97,7 @@ public class MainWindow extends Application {
             }
             if(node != null) {
                 FileData fileData = (FileData)node.getUserData();
-                fileData.process();
+                fileData.process(value);
             }
 
             System.out.println(value);

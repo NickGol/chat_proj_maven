@@ -1,6 +1,12 @@
 package chat.client;
 
-import java.awt.*;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
+
+//import java.beans.EventHandler;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -18,7 +24,17 @@ public class FileData {
         this.file = file;
     }
 
-    public void process() {
+    public void process(Event event) {
+        Node targetNode = (Node) event.getTarget();
+        //String targetNodeID = targetNode.getId();
+        //System.out.println( targetNode.getId() );
+        String targetNodeID = targetNode.getId();
+        if( targetNode.getParent() instanceof Label)
+            targetNodeID = targetNode.getParent().getId();
+        switch ( targetNodeID ) {
+            case "deleteFile": { System.out.println( targetNode.getId() ); break;}
+            default: { System.out.println( targetNode.getId() ); break; }
+        }
         Runtime runtime = Runtime.getRuntime();
         try {
             String os = System.getProperty("os.name").toLowerCase();

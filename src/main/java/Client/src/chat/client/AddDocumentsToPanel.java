@@ -5,7 +5,9 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -20,6 +22,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+view VBox
+        StackPane
+            Label
+                IconView (Labeled)
+            Label (close)
+ */
 public class AddDocumentsToPanel {
 
     FileChooser fileChooser;
@@ -28,6 +37,7 @@ public class AddDocumentsToPanel {
 
     public static void main(String[] args) {
         AddDocumentsToPanel addDocumentsToPanel = new AddDocumentsToPanel();
+
         //final File folder = new File("out/production/Client/FileIcons/png");
         //addDocumentsToPanel.listFilesInFolder(folder);
         //addDocumentsToPanel.selectFiles();
@@ -94,10 +104,24 @@ public class AddDocumentsToPanel {
         }
         return unknownFormat.toURI().toURL();
 
+        /*vBox
+        switch (o instanceof Object )
+            case */
+
+
     }
 
     private VBox wrapInVBox(File file, ImageView fileIcon) {
         VBox vBox = new VBox();
+        vBox.getClass();
+        Text text = new Text("x");
+        text.setId("deleteFile");
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.TOP_RIGHT);
+        Label deleteLabel = new Label("X");
+        deleteLabel.getStyleClass().add("file-delete-label");
+        deleteLabel.setAlignment(Pos.CENTER);
+        deleteLabel.setId("deleteFile");
         vBox.setMaxWidth(105);
         vBox.getStylesheets().add("UI/Styles.css");
         vBox.getStyleClass().add("user-file-item");
@@ -112,7 +136,8 @@ public class AddDocumentsToPanel {
         Label label = new Label(file.getName(), fileIcon);
         label.setContentDisplay(ContentDisplay.TOP);
         label.setWrapText(true);
-        vBox.getChildren().add(label);
+        stackPane.getChildren().addAll(label, deleteLabel);
+        vBox.getChildren().add(stackPane);
         return vBox;
     }
     private void readRegisteredTypesOfDocuments() {

@@ -47,7 +47,7 @@ public class UserFriendItem {
     private ImageView loadUserPhoto(String userPhotoPath) {
         Image image = new Image(userPhotoPath,50, 50,
                 true, true);
-        ImageView photo = new ImageView(image);
+        ImageView photo = new ImageView();
         Circle circle = new Circle(25, 25, 25);
         photo.setClip(circle);
         return photo;
