@@ -1,9 +1,12 @@
 package chat.client;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +22,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Observable;
 
 
 public class MainWindow extends Application {
@@ -35,7 +40,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        scene = createScene();
+        scene = createScene1();
         scene.getStylesheets().add("UI/Styles.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Отладка информации отображения о пользователе");
@@ -47,6 +52,36 @@ public class MainWindow extends Application {
         //primaryStage.getScene().getStylesheets().add("polynomial/Styles.css");
 
         primaryStage.show();
+    }
+    VBox vBox;
+    private Scene createScene1() {
+        // Use a border pane as the root for scene
+        border = new BorderPane();
+        Button addFilesButton = new Button("Прикрепить файлы");
+        border.setRight(addFilesButton);
+        MessageBuilder messageBuilder = MessageBuilder.getMessageBuilder();
+        vBox = new VBox();
+        /*ObservableList<Node> list1 = messageBuilder.getEmptyMessage();*/
+        messageBuilder.setObservableList(vBox.getChildren());
+        messageBuilder.getEmptyMessage();
+        //vBox.getChildren() = messageBuilder.getEmptyMessage();
+        addFilesButton.setOnMouseReleased( (value) -> {
+            //vBox.getChildren().clear();
+            /*Platform.runLater( () -> {
+                List<Node> list = messageBuilder.addFiles();
+                ObservableList<Node> oList;
+                vBox.getChildren().addListener
+            } );*/
+            messageBuilder.addFiles();
+            //vBox.getChildren().setAll(messageBuilder.addFiles());
+            System.out.println("Append files");
+
+        });
+        //vBox.getChildren().addAll( messageBuilder.addFiles() );
+
+        border.setCenter( vBox );
+
+        return new Scene(border);
     }
 
     private Scene createScene() {

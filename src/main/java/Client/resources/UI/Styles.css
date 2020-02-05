@@ -229,9 +229,7 @@
 
 
 .user-file-item {
-    /*-fx-padding: 5 0 5 0;
-    -fx-background-height: 50;
-    -fx-max-height: 50;*/
+    /*-fx-padding: 3;*/
     -fx-background-radius: 5px;
     -fx-alignment: top-center;
     -fx-spacing: 5;
@@ -241,6 +239,11 @@
     /*-fx-background-color: #f3f5f8;*/
     -fx-background-color: skyblue;
 
+}
+
+.user-file-stack {
+    -fx-padding: 3;
+    /*-fx-background-insets: 3;*/
 }
 
 .file-delete-label {
@@ -258,4 +261,26 @@
 
 .file-delete-label:hover {
     -fx-background-color: #FE7A79;
+}
+
+.flow-pane:hover {
+    -fx-background-color: #BFBFBF;
+}
+
+.message_text_area {
+    -fx-pref-row-count: 3;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-overrun: center-word-ellipsis;
+    -fx-wrap-text: true;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
 }

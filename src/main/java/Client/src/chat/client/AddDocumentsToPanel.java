@@ -1,6 +1,7 @@
 package chat.client;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -46,9 +47,9 @@ public class AddDocumentsToPanel {
 
     }
 
-    public List<VBox> selectFiles() throws MalformedURLException {
-        List<VBox> list = new LinkedList<>();
-        VBox vBox = null;
+    public List<Node> selectFiles() throws MalformedURLException {
+        List<Node> list = new LinkedList<>();
+        Node vBox = null;
         Path path = null;
         fileChooser = new FileChooser();
         selectedFiles = fileChooser.showOpenMultipleDialog(null);
@@ -125,6 +126,7 @@ public class AddDocumentsToPanel {
         vBox.setMaxWidth(105);
         vBox.getStylesheets().add("UI/Styles.css");
         vBox.getStyleClass().add("user-file-item");
+
         vBox.setAlignment(Pos.TOP_CENTER);
         /*Label fileName = new Label(file.getName());
         //fileName.setMaxWidth();
@@ -136,6 +138,7 @@ public class AddDocumentsToPanel {
         Label label = new Label(file.getName(), fileIcon);
         label.setContentDisplay(ContentDisplay.TOP);
         label.setWrapText(true);
+        label.getStyleClass().add("user-file-stack");
         stackPane.getChildren().addAll(label, deleteLabel);
         vBox.getChildren().add(stackPane);
         return vBox;

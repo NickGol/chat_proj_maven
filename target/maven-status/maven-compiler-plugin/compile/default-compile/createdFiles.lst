@@ -3,6 +3,8 @@ chat/client/Authorization.class
 chat/client/ButtonExperiments.class
 chat/client/AuthorizationUI.class
 chat/client/Main.class
+chat/client/FileData.class
 chat/client/AddDocumentsToPanel.class
 chat/client/UserFriendItemInfo.class
 chat/client/UserFriendItem.class
+chat/client/MessageBuilder.class
