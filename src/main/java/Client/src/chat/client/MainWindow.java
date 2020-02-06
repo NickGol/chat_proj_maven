@@ -66,14 +66,7 @@ public class MainWindow extends Application {
         messageBuilder.getEmptyMessage();
         //vBox.getChildren() = messageBuilder.getEmptyMessage();
         addFilesButton.setOnMouseReleased( (value) -> {
-            //vBox.getChildren().clear();
-            /*Platform.runLater( () -> {
-                List<Node> list = messageBuilder.addFiles();
-                ObservableList<Node> oList;
-                vBox.getChildren().addListener
-            } );*/
             messageBuilder.addFiles();
-            //vBox.getChildren().setAll(messageBuilder.addFiles());
             System.out.println("Append files");
 
         });

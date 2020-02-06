@@ -53,24 +53,26 @@ public class AddDocumentsToPanel {
         Path path = null;
         fileChooser = new FileChooser();
         selectedFiles = fileChooser.showOpenMultipleDialog(null);
-        for( File file : selectedFiles) {
-            BasicFileAttributes attr;
-            Map<String, Object> map = null;
+        if( selectedFiles != null) {
+            for (File file : selectedFiles) {
+                BasicFileAttributes attr;
+                Map<String, Object> map = null;
 
-            path = file.toPath();
-            try {
-                attr = Files.readAttributes(path, BasicFileAttributes.class);
-                //map = Files.readAttributes(path, String.valueOf(String.class));
-                System.out.println(String.valueOf(String.class));
-                System.out.println( attr.creationTime() );
-            } catch (IOException e) {
-                e.printStackTrace();
+                path = file.toPath();
+                try {
+                    attr = Files.readAttributes(path, BasicFileAttributes.class);
+                    //map = Files.readAttributes(path, String.valueOf(String.class));
+                    System.out.println(String.valueOf(String.class));
+                    System.out.println(attr.creationTime());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //selectImageToShow(file);
+                vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
+                vBox.setUserData(new FileData(path, file));
+                list.add(vBox);
+                //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }
-            //selectImageToShow(file);
-            vBox = wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) );
-            vBox.setUserData(  new FileData( path, file )  );
-            list.add( vBox );
-            //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
         }
         return list;
     }

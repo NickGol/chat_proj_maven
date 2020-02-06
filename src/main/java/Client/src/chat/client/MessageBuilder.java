@@ -3,6 +3,7 @@ package chat.client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
@@ -30,9 +31,10 @@ public class MessageBuilder {
     public ObservableList<Node> addFiles(){
         deleteEmptyTextArea();
         try {
-            FlowPane flowPane = new FlowPane();
-            flowPane.getChildren().addAll(addDocumentsToPanel.selectFiles());
-            messageStructureList.add( flowPane );
+            //FlowPane flowPane = new FlowPane();
+            //flowPane.getChildren().addAll(addDocumentsToPanel.selectFiles());
+            //messageStructureList.add( flowPane );
+            searchPlaceAndAddFiles( addDocumentsToPanel.selectFiles() );
         } catch (MalformedURLException e) {
             throw new RuntimeException("Не удалось прикрепить файлы для отправки");
         } finally {
@@ -52,20 +54,32 @@ public class MessageBuilder {
         messageStructureList = list;
     }
 
-    private TextArea addEmptyMessage() {
+    private Node addEmptyMessage() {
         TextArea textArea = new TextArea();
         textArea.getStyleClass().add("message_text_area");
         textArea.setPromptText("Введите сообщение.");
         return textArea;
     }
 
-    private void deleteEmptyTextArea() {
+    private boolean deleteEmptyTextArea() {
         if( messageStructureList.get(messageStructureList.size()-1) instanceof TextInputControl)  {
             TextInputControl textInputControl = (TextInputControl) messageStructureList.get(messageStructureList.size()-1);
             if(textInputControl.getText().isEmpty()) {
                 messageStructureList.remove(textInputControl);
+                return true;
             }
         }
-        else return;
+        return false;
+    }
+
+    private void searchPlaceAndAddFiles( List<Node> listOfFiles) {
+        int listSize = messageStructureList.size();
+        if( listSize > 0 && messageStructureList.get(listSize-1) instanceof FlowPane ) {
+                ((FlowPane) messageStructureList.get(listSize-1)).getChildren().addAll(listOfFiles);
+        } else {
+            FlowPane flowPane = new FlowPane();
+            flowPane.getChildren().addAll(listOfFiles);
+            messageStructureList.add(flowPane);
+        }
     }
 }

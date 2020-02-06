@@ -275,12 +275,99 @@
     -fx-wrap-text: true;
 }
 
-.text-area .scroll-pane {
+.message_text_area .scroll-pane {
+        -fx-hbar-policy : as-needed;
+        -fx-vbar-policy : always;
+}
+
+.message_text_area:focused {
+    -fx-focus-color: transparent;
+    -fx-border-style: none;
+}
+
+/***********************************   Scroll Bar   ***********************************/
+/**************************************************************************************/
+.message_text_area .scroll-bar:horizontal .track,
+.message_text_area .scroll-bar:vertical .track{
+    -fx-background-color :white;
+    -fx-border-color :transparent;
+    -fx-background-radius : 5;
+    /*-fx-border-radius :2.0em;*/
+}
+.message_text_area .scroll-bar:horizontal .increment-button ,
+.message_text_area .scroll-bar:horizontal .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 5;
+    -fx-padding :0.0 0.0 10.0 0.0;
+}
+.message_text_area .scroll-bar:vertical .increment-button ,
+.message_text_area .scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 5;
+    -fx-padding :0.0 10.0 0.0 0.0;
+}
+/*.message_text_area .increment-button ,.message_text_area .decrement-button {
+    -fx-background-color:transparent;
+   -fx-border-color:derive(gray,80%);
+       -fx-padding :10px;
+}*/
+.message_text_area .scroll-bar .increment-arrow,
+.message_text_area .scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.15em 0.0;
+    /*-fx-padding:0;*/
+}
+.message_text_area .scroll-bar:vertical .increment-arrow,
+.message_text_area .scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    /*-fx-padding :0.0 0.15em;*/
+    -fx-padding:0;
+}
+.message_text_area .scroll-bar:horizontal .thumb,
+.message_text_area .scroll-bar:vertical .thumb {
+    -fx-background-color :derive(black,90.0%);
+    -fx-opacity: 0.5;
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+/* ------------------------------------------------------------------------------------- */
+/** EVENT CSS **/
+/* ------------------------------------------------------------------------------------- */
+
+/* The main scrollbar **track** CSS class on event of "hover" and "pressed" */
+
+.message_text_area .scroll-bar:horizontal:hover .track ,
+.message_text_area .scroll-bar:horizontal:pressed .track ,
+.message_text_area .scroll-bar:vertical:hover .track,
+.message_text_area .scroll-bar:vertical:pressed .track{
+	-fx-background-color:derive(#f2f2f2,0%);
+     /*-fx-background-color: derive(#434343,70%);*/
+	 -fx-opacity: 1;
+	 -fx-border-color:derive(gray,80%);
+	 -fx-background-radius: 0em;
+}
+
+/* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
+.message_text_area .scroll-bar .thumb:hover,
+.message_text_area .scroll-bar .thumb:pressed{
+    -fx-background-color: derive(black,50%);
+}
+.message_text_area .increment-button:hover ,.message_text_area .decrement-button:hover {
+    -fx-background-color:derive(gray,100%);
+	-fx-border-color:derive(gray,80%);	
+	-fx-padding:10px;
+}
+
+/********************************************************************************/
+/********************************************************************************/
+
+/*.message_text-area .scroll-pane {
     -fx-background-color: transparent;
 }
-.text-area .scroll-pane .viewport{
+.message_text-area .scroll-pane .viewport{
     -fx-background-color: transparent;
 }
-.text-area .scroll-pane .content{
+.message_text-area .scroll-pane .content{
     -fx-background-color: transparent;
-}
+}*/
