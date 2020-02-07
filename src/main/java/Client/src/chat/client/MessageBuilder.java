@@ -78,6 +78,7 @@ public class MessageBuilder {
                 ((FlowPane) messageStructureList.get(listSize-1)).getChildren().addAll(listOfFiles);
         } else {
             FlowPane flowPane = new FlowPane();
+            flowPane.setUserData( new ContainerItem() );
             flowPane.getChildren().addAll(listOfFiles);
             messageStructureList.add(flowPane);
         }

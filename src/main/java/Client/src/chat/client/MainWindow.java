@@ -68,11 +68,13 @@ public class MainWindow extends Application {
         addFilesButton.setOnMouseReleased( (value) -> {
             messageBuilder.addFiles();
             System.out.println("Append files");
-
         });
-        //vBox.getChildren().addAll( messageBuilder.addFiles() );
-
+        SearchMetaData searchMetaData = new SearchMetaData();
         border.setCenter( vBox );
+        border.getCenter().setOnMouseReleased( new SearchMetaData()
+                /*(value) -> { searchMetaData.handle(value); }*/);
+
+        //border.setCenter( vBox );
 
         return new Scene(border);
     }

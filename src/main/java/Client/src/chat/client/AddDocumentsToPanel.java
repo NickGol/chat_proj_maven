@@ -69,7 +69,8 @@ public class AddDocumentsToPanel {
                 }
                 //selectImageToShow(file);
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
-                vBox.setUserData(new FileData(path, file));
+                //vBox.setUserData(new FileData(path, file));
+                vBox.setUserData( new OpenFileItem(path) );
                 list.add(vBox);
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }
@@ -115,35 +116,29 @@ public class AddDocumentsToPanel {
     }
 
     private VBox wrapInVBox(File file, ImageView fileIcon) {
-        VBox vBox = new VBox();
-        vBox.getClass();
-        Text text = new Text("x");
-        text.setId("deleteFile");
+
+        VBox itemExternalСontainer = new VBox();
         StackPane stackPane = new StackPane();
-        stackPane.setAlignment(Pos.TOP_RIGHT);
         Label deleteLabel = new Label("X");
+        Label iconLabel = new Label(file.getName(), fileIcon);
+
+        iconLabel.setContentDisplay(ContentDisplay.TOP);
+        iconLabel.setWrapText(true);
+        iconLabel.getStyleClass().add("user-file-stack");
+
         deleteLabel.getStyleClass().add("file-delete-label");
         deleteLabel.setAlignment(Pos.CENTER);
-        deleteLabel.setId("deleteFile");
-        vBox.setMaxWidth(105);
-        vBox.getStylesheets().add("UI/Styles.css");
-        vBox.getStyleClass().add("user-file-item");
+        deleteLabel.setUserData( new DeleteItem( itemExternalСontainer ) );
 
-        vBox.setAlignment(Pos.TOP_CENTER);
-        /*Label fileName = new Label(file.getName());
-        //fileName.setMaxWidth();
-        //fileName.setPrefWidth(10);
-        fileName.setWrapText(true);
-        //fileName.setStyle("-fx-background-color : green");
-        vBox.getChildren().addAll(fileIcon, fileName);*/
+        stackPane.setAlignment(Pos.TOP_RIGHT);
+        stackPane.getChildren().addAll(iconLabel, deleteLabel);
 
-        Label label = new Label(file.getName(), fileIcon);
-        label.setContentDisplay(ContentDisplay.TOP);
-        label.setWrapText(true);
-        label.getStyleClass().add("user-file-stack");
-        stackPane.getChildren().addAll(label, deleteLabel);
-        vBox.getChildren().add(stackPane);
-        return vBox;
+        itemExternalСontainer.setMaxWidth(105);
+        itemExternalСontainer.getStylesheets().add("UI/Styles.css");
+        itemExternalСontainer.getStyleClass().add("user-file-item");
+        itemExternalСontainer.setAlignment(Pos.TOP_CENTER);
+        itemExternalСontainer.getChildren().add(stackPane);
+        return itemExternalСontainer;
     }
     private void readRegisteredTypesOfDocuments() {
 

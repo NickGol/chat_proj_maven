@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.List;
 
 public class FileData {
 
@@ -40,7 +41,7 @@ public class FileData {
             String os = System.getProperty("os.name").toLowerCase();
             System.out.println(os);
             String[] cmd;
-            if( os.equals("win") ) {
+            if( os.startsWith("windows") ) {
                 cmd = new String[] { "cmd /C ", file.getPath() };
                 runtime.exec(cmd);
             }
