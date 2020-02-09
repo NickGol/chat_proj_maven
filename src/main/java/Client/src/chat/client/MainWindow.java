@@ -1,8 +1,7 @@
 package chat.client;
 
+import ItemsMetaDataPackage.FileData;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -21,9 +20,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-import java.util.Observable;
 
 
 public class MainWindow extends Application {
@@ -127,7 +123,7 @@ public class MainWindow extends Application {
             }
             if(node != null) {
                 FileData fileData = (FileData)node.getUserData();
-                fileData.process(value);
+                //fileData.process(value);
             }
 
             System.out.println(value);

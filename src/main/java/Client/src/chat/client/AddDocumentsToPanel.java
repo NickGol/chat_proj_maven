@@ -1,5 +1,7 @@
 package chat.client;
 
+import ItemsMetaDataPackage.DeleteItem;
+import ItemsMetaDataPackage.OpenFileItem;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -8,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;

@@ -1,19 +1,21 @@
 package chat.client;
 
+import ItemsMetaDataPackage.*;
+import com.sun.istack.internal.NotNull;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.net.MalformedURLException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MessageBuilder {
     private MessageBuilder() {}
@@ -56,6 +58,7 @@ public class MessageBuilder {
 
     private Node addEmptyMessage() {
         TextArea textArea = new TextArea();
+        textArea.textProperty();
         textArea.getStyleClass().add("message_text_area");
         textArea.setPromptText("Введите сообщение.");
         return textArea;
@@ -72,15 +75,54 @@ public class MessageBuilder {
         return false;
     }
 
+
+    /*public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Set<Object> seen = ConcurrentHashMap.newKeySet();
+        return t -> seen.add(keyExtractor.apply(t));
+    }*/
+
     private void searchPlaceAndAddFiles( List<Node> listOfFiles) {
         int listSize = messageStructureList.size();
+        boolean duplicate = false;
         if( listSize > 0 && messageStructureList.get(listSize-1) instanceof FlowPane ) {
-                ((FlowPane) messageStructureList.get(listSize-1)).getChildren().addAll(listOfFiles);
+            Node qqq = searchForMetaData( (Pane)messageStructureList.get(listSize-1), OpenFileItem.class );
+            // delete duplicated files
+            Set<String> addedFilesPathList = ((Pane) qqq).getChildren().stream()
+                    .map(x->((OpenFileItem)x.getUserData()).getFilePath())
+                    .collect(Collectors.toSet());
+
+            for (int i = 0; i < listOfFiles.size(); i++) {
+                String newNodeFilePath = ((OpenFileItem) listOfFiles.get(i).getUserData()).getFilePath();
+                if( addedFilesPathList.add(newNodeFilePath) ) {
+                    ((Pane) messageStructureList.get(listSize-1)).getChildren().add(listOfFiles.get(i));
+                }
+            }
         } else {
-            FlowPane flowPane = new FlowPane();
-            flowPane.setUserData( new ContainerItem() );
-            flowPane.getChildren().addAll(listOfFiles);
-            messageStructureList.add(flowPane);
+            if( listOfFiles.size()>0 ) {
+                FlowPane flowPane = new FlowPane();
+                flowPane.setUserData(new ContainerItem());
+                flowPane.getChildren().addAll(listOfFiles);
+                messageStructureList.add(flowPane);
+            }
         }
+    }
+
+    private Node searchForMetaData(@NotNull Pane root, @NotNull Class<? extends ItemsMetaData> clazz) {
+        if( root != null && clazz != null ) {
+            if(  root.getUserData()!=null && clazz.isAssignableFrom( root.getUserData().getClass() )  ) {
+                System.out.println("Item was founded");
+                return root;
+            }
+            for (int i = 0; i < root.getChildren().size(); i++) {
+                if( root.getChildren().get(i) instanceof Pane) {
+                    Node node = searchForMetaData( (Pane)root.getChildren().get(i),clazz );
+                    if( node!=null ) return node;
+                }
+            }
+            return null;
+        }
+        System.out.println("Элемент не найден");
+        //return null;
+        throw new RuntimeException("В элементе " + root + " Не удалось найти элемент UserData типа " + clazz.getName());
     }
 }

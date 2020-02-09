@@ -1,7 +1,4 @@
-package chat.client;
-
-import javafx.scene.Node;
-import javafx.scene.layout.Pane;
+package ItemsMetaDataPackage;
 
 //import java.beans.EventHandler;
 

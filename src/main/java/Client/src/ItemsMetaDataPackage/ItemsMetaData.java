@@ -1,9 +1,8 @@
-package chat.client;
-
-import javafx.event.Event;
+package ItemsMetaDataPackage;
 
 public interface ItemsMetaData {
 
     String getDescription();
     void process();
+
 }

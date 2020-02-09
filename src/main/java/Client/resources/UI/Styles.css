@@ -268,11 +268,12 @@
 }
 
 .message_text_area {
-    -fx-pref-row-count: 3;
+    -fx-pref-row-count: 1;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-text-overrun: center-word-ellipsis;
     -fx-wrap-text: true;
+    -fx-max-height: 500;
 }
 
 .message_text_area .scroll-pane {
