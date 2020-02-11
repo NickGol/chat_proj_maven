@@ -19,8 +19,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +35,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-@SpringBootApplication(scanBasePackages = "src.main.java.Client.src")
+@SpringBootApplication
+//@EnableAutoConfiguration
 public class MainWindow extends AbstractJavaFxApplicationSupport {
     public static void main(String[] args) { launchApp( MainWindow.class, args );
         //launch(args);
@@ -66,14 +70,15 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
         primaryStage.show();
     }
 
-    @Bean
+    /*@Bean
+    @Autowired
     public CommandLineRunner demo(FileDataRepository repository) {
         return (args) -> {
             // save a few customers
             repository.save( new FileData() );
 
         };
-    }
+    }*/
 
     VBox vBox;
     private Scene createScene1() {
