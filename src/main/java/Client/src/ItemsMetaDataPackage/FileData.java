@@ -1,5 +1,8 @@
 package ItemsMetaDataPackage;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,10 +16,18 @@ public class FileData {
     transient Path path;
     transient File file;
     transient BasicFileAttributes basicFileAttributes;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     String fileName;
     String filePath;
     FileTime creationTime;
     FileTime modifyingTime;
+
+    public FileData() {
+        this.fileName = "fileName";
+        this.filePath = "filePath";
+    }
 
     public FileData(Path path) {
         this.path = path;

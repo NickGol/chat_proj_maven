@@ -1,6 +1,8 @@
 package chat.client;
 
 import ItemsMetaDataPackage.FileData;
+import ItemsMetaDataPackage.FileDataRepository;
+import com.zaxxer.hikari.HikariDataSource;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,20 +19,34 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
 
+import javax.sql.DataSource;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
 
-
-public class MainWindow extends Application {
-    public static void main(String[] args) {
-        launch(args);
+@SpringBootApplication(scanBasePackages = "src.main.java.Client.src")
+public class MainWindow extends AbstractJavaFxApplicationSupport {
+    public static void main(String[] args) { launchApp( MainWindow.class, args );
+        //launch(args);
     }
     Scene scene;
     BorderPane border;
     VBox userFriendsItemsContainer;
     ScrollPane userFriendsItemsScrollPane;
 
+    @Bean
+    @ConfigurationProperties("app.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
 
 
     @Override
@@ -49,6 +65,16 @@ public class MainWindow extends Application {
 
         primaryStage.show();
     }
+
+    @Bean
+    public CommandLineRunner demo(FileDataRepository repository) {
+        return (args) -> {
+            // save a few customers
+            repository.save( new FileData() );
+
+        };
+    }
+
     VBox vBox;
     private Scene createScene1() {
         // Use a border pane as the root for scene
