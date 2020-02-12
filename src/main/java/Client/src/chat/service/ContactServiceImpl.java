@@ -1,12 +1,12 @@
-package service;
+package chat.service;
 
-import ItemsMetaDataPackage.FileData;
-import ItemsMetaDataPackage.FileDataRepository;
+import chat.ItemsMetaDataPackage.FileData;
+import chat.ItemsMetaDataPackage.FileDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**

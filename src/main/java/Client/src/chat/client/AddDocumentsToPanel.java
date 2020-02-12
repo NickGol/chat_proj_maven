@@ -1,7 +1,7 @@
 package chat.client;
 
-import ItemsMetaDataPackage.DeleteItem;
-import ItemsMetaDataPackage.OpenFileItem;
+import chat.ItemsMetaDataPackage.DeleteItem;
+import chat.ItemsMetaDataPackage.OpenFileItem;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;

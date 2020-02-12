@@ -1,6 +1,6 @@
-package exception;
+package chat.exception;
 
-import org.springframework.http.HttpStatus;
+/*import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -14,3 +14,4 @@ public class NotFoundException extends RuntimeException {
         super("Country with name=" + name + " not found");
     }
 }
+*/

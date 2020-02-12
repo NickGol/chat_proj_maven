@@ -1,4 +1,4 @@
-package dialect;
+package chat.dialect;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.identity.IdentityColumnSupport;

@@ -1,4 +1,4 @@
-package ItemsMetaDataPackage;
+package chat.ItemsMetaDataPackage;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

@@ -1,16 +1,16 @@
-package ItemsMetaDataPackage;
+package chat.ItemsMetaDataPackage;
 
-        import org.springframework.data.repository.CrudRepository;
-        import org.springframework.stereotype.Repository;
-        import org.springframework.transaction.annotation.Propagation;
-        import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
-        import java.util.List;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-
+//@Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public interface FileDataRepository extends CrudRepository<FileData, Integer> {
     List<FileData> findAll();

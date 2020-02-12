@@ -1,4 +1,4 @@
-package dialect;
+package chat.dialect;
 
 import org.hibernate.MappingException;
 import org.hibernate.dialect.identity.IdentityColumnSupportImpl;

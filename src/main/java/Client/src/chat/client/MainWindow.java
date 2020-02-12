@@ -1,9 +1,7 @@
 package chat.client;
 
-import ItemsMetaDataPackage.FileData;
-import ItemsMetaDataPackage.FileDataRepository;
+import chat.ItemsMetaDataPackage.FileData;
 import com.zaxxer.hikari.HikariDataSource;
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,23 +17,23 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.io.File;
 import java.net.MalformedURLException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"chat"})
+@ComponentScan(basePackages = { "chat" })
+@EntityScan("chat")
+@EnableJpaRepositories("chat")
 //@EnableAutoConfiguration
 public class MainWindow extends AbstractJavaFxApplicationSupport {
     public static void main(String[] args) { launchApp( MainWindow.class, args );
@@ -46,12 +44,22 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
     VBox userFriendsItemsContainer;
     ScrollPane userFriendsItemsScrollPane;
 
+
     @Bean
     @ConfigurationProperties("app.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
+    @PostConstruct
+    private  void printFunction() {
+        System.out.println( System.getProperty("java.class.path") );
+        System.out.println("Post Construct");
+        System.out.println("Post Construct");
+        System.out.println("Post Construct");
+        System.out.println("Post Construct");
+        System.out.println("Post Construct");
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

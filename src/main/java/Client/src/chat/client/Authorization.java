@@ -2,8 +2,6 @@ package chat.client;
 
 //import com.sun.istack.internal.NotNull;
 
-import javax.annotation.*;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

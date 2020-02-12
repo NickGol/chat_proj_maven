@@ -1,6 +1,6 @@
 package chat.client;
 
-import ItemsMetaDataPackage.ItemsMetaData;
+import chat.ItemsMetaDataPackage.ItemsMetaData;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;

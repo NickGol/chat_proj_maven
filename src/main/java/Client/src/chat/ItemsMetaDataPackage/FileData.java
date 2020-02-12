@@ -1,4 +1,4 @@
-package ItemsMetaDataPackage;
+package chat.ItemsMetaDataPackage;
 
 import javax.persistence.*;
 import java.io.File;
@@ -19,10 +19,11 @@ public class FileData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+            int id;
     String fileName;
     String filePath;
-    FileTime creationTime;
-    FileTime modifyingTime;
+    transient FileTime creationTime;
+    transient FileTime modifyingTime;
 
     public FileData() {
         this.fileName = "fileName";
@@ -60,29 +61,20 @@ public class FileData {
         return Objects.hash(fileName, filePath, creationTime, modifyingTime);
     }
 
-    public Path getPath() {
-        return path;
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    String fileName;
+    String filePath;
+
+
+    public FileData() {
+        this.fileName = "fileName";
+        this.filePath = "filePath";
     }
 
-    public void setPath(Path path) {
-        this.path = path;
-    }
 
-    public File getFile() {
-        return file;
-    }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    public BasicFileAttributes getBasicFileAttributes() {
-        return basicFileAttributes;
-    }
-
-    public void setBasicFileAttributes(BasicFileAttributes basicFileAttributes) {
-        this.basicFileAttributes = basicFileAttributes;
-    }
 
     public String getFileName() {
         return fileName;
@@ -100,7 +92,7 @@ public class FileData {
         this.filePath = filePath;
     }
 
-    public FileTime getCreationTime() {
+    /*public FileTime getCreationTime() {
         return creationTime;
     }
 
@@ -114,5 +106,5 @@ public class FileData {
 
     public void setModifyingTime(FileTime modifyingTime) {
         this.modifyingTime = modifyingTime;
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package ItemsMetaDataPackage;
+package chat.ItemsMetaDataPackage;
 
 //import java.beans.EventHandler;
 

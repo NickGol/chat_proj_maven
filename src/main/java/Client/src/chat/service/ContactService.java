@@ -1,6 +1,6 @@
-package service;
+package chat.service;
 
-import ItemsMetaDataPackage.FileData;
+import chat.ItemsMetaDataPackage.FileData;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import java.util.List;
  * @author Ruslan Molchanov (ruslanys@gmail.com)
  * @author http://mruslan.com
  */
+
 public interface ContactService {
 
     FileData save(FileData contact);

@@ -1,6 +1,5 @@
 package chat.client;
 
-import ItemsMetaDataPackage.*;
 import com.sun.istack.internal.NotNull;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +8,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import chat.ItemsMetaDataPackage.ContainerItem;
+import chat.ItemsMetaDataPackage.ItemsMetaData;
+import chat.ItemsMetaDataPackage.OpenFileItem;
 
 import java.net.MalformedURLException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ItemsMetaDataPackage;
+package chat.ItemsMetaDataPackage;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,7 +13,7 @@ public class OpenFileItem implements ItemsMetaData {
 
     public OpenFileItem(Path path) {
         this.path = path;
-        fileData = new FileData(path);
+        //fileData = new FileData(path);
     }
 
     public String getDescription() {
