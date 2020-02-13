@@ -2,9 +2,14 @@ package TestPackage;
 
 import TestPackageMain.Test;
 
+import java.util.UUID;
+
 public class TestFromAnotherPackage extends Test {
 
     public static void main(String[] args) {
+        UUID uuid = UUID.randomUUID();
+        System.out.println(uuid);
+        System.out.println( uuid.toString() );
         Test test = new Test();
         test.metod2();
 

@@ -8,10 +8,13 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelFormat;
+import javafx.scene.image.PixelReader;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -86,6 +89,23 @@ public class AddDocumentsToPanel {
         Image image = new Image(userPhotoPath.toString(), 75, 75, false, true);
         System.out.println( image.getHeight() );
         System.out.println( image.getWidth() );
+        PixelReader pixelReader = image.getPixelReader();
+
+        int width = (int)image.getWidth();
+        int height = (int)image.getHeight();
+        byte[] buffer = new byte[width * height * 4];
+        pixelReader.getPixels(
+                0,
+                0,
+                width,
+                height,
+                PixelFormat.getByteBgraInstance(),
+                buffer,
+                0,
+                width*4
+        );
+
+
         ImageView photo = new ImageView(image);
         //photo.setUserData( new FileData( userPhotoPath, "qqqqq") );
         return photo;
