@@ -1,16 +1,11 @@
 package chat.ItemsMetaDataPackage;
 
-import javafx.scene.image.Image;
-
-import javax.imageio.ImageIO;
 import javax.persistence.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.sql.Blob;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -29,7 +24,7 @@ public class FileData {
     String filePath;
     UUID uuid = UUID.randomUUID();
     String uuidString = uuid.toString();
-    byte[] image1;
+    byte[] imageByteArray;
     transient FileTime creationTime;
     transient FileTime modifyingTime;
 
@@ -40,7 +35,7 @@ public class FileData {
         try(FileInputStream inputStream = new FileInputStream("/home/kolka/Downloads/foto.png")) {
             byte[] img = new byte[inputStream.available()];
             inputStream.read(img);
-            image1 = img;
+            imageByteArray = img;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

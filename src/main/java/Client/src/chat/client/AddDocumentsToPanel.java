@@ -93,8 +93,7 @@ public class AddDocumentsToPanel {
         Image image = new Image(userPhotoPath.toString(), 75, 75, false, true);
         System.out.println( image.getHeight() );
         System.out.println( image.getWidth() );
-        PixelReader pixelReader = image.getPixelReader();
-        saveToFile(image);
+        //saveToFile(image);
 
         BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -105,21 +104,21 @@ public class AddDocumentsToPanel {
         }
 
 
-        File file = new File("file.png");
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            fos.write( byteArrayOutputStream.toByteArray() );
-            fos.flush();
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        File file = new File("file.png");
+//        FileOutputStream fos = null;
+//        try {
+//            fos = new FileOutputStream(file);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            fos.write( byteArrayOutputStream.toByteArray() );
+//            fos.flush();
+//            fos.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
 
