@@ -2,6 +2,7 @@ package chat.client;
 
 import chat.ItemsMetaDataPackage.DeleteItem;
 import chat.ItemsMetaDataPackage.OpenFileItem;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -14,9 +15,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -90,25 +94,52 @@ public class AddDocumentsToPanel {
         System.out.println( image.getHeight() );
         System.out.println( image.getWidth() );
         PixelReader pixelReader = image.getPixelReader();
+        saveToFile(image);
 
-        int width = (int)image.getWidth();
-        int height = (int)image.getHeight();
-        byte[] buffer = new byte[width * height * 4];
-        pixelReader.getPixels(
-                0,
-                0,
-                width,
-                height,
-                PixelFormat.getByteBgraInstance(),
-                buffer,
-                0,
-                width*4
-        );
+        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bImage, "png", byteArrayOutputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        File file = new File("file.png");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            fos.write( byteArrayOutputStream.toByteArray() );
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
 
 
         ImageView photo = new ImageView(image);
         //photo.setUserData( new FileData( userPhotoPath, "qqqqq") );
         return photo;
+    }
+
+    public static void saveToFile(Image image) {
+        File outputFile = new File("swing.png");
+        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+        //WritableRaster raster = bImage.getRaster();
+        //DataBufferByte dataBuffer = (DataBufferByte) raster.getDataBuffer();
+        try {
+            ImageIO.write(bImage, "png", outputFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private URL selectImageToShow(File fileToShow) throws MalformedURLException {
