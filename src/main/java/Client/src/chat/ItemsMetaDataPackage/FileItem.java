@@ -1,19 +1,23 @@
 package chat.ItemsMetaDataPackage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class OpenFileItem implements ItemsMetaData {
+public class FileItem implements ItemsMetaData, MessageItemInterface {
 
     final String description = "Container";
     private Path path;
     private FileData fileData;
 
-    public OpenFileItem(Path path) {
+    @Autowired
+    FileDataNew fileDataNew;
+
+    public FileItem(Path path) {
         this.path = path;
-        //fileData = new FileData(path);
     }
 
     public String getDescription() {
@@ -49,10 +53,17 @@ public class OpenFileItem implements ItemsMetaData {
     }
 
     @Override
+    public void saveToDataBase() {
+        fileDataNew.setPath(path);
+        fileDataNew.setImageByteArray(null); //TODO: Add image data
+
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OpenFileItem that = (OpenFileItem) o;
+        FileItem that = (FileItem) o;
         return description.equals(that.description) &&
                 path.equals(that.path) &&
                 fileData.equals(that.fileData);

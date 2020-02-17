@@ -1,7 +1,7 @@
 package chat.client;
 
 import chat.ItemsMetaDataPackage.DeleteItem;
-import chat.ItemsMetaDataPackage.OpenFileItem;
+import chat.ItemsMetaDataPackage.FileItem;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -9,17 +9,12 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelFormat;
-import javafx.scene.image.PixelReader;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -78,7 +73,7 @@ public class AddDocumentsToPanel {
                 //selectImageToShow(file);
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
                 //vBox.setUserData(new FileData(path, file));
-                vBox.setUserData( new OpenFileItem(path) );
+                vBox.setUserData( new FileItem(path) );
                 list.add(vBox);
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }

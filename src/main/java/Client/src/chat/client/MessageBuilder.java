@@ -10,7 +10,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import chat.ItemsMetaDataPackage.ContainerItem;
 import chat.ItemsMetaDataPackage.ItemsMetaData;
-import chat.ItemsMetaDataPackage.OpenFileItem;
+import chat.ItemsMetaDataPackage.FileItem;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -86,14 +86,14 @@ public class MessageBuilder {
         int listSize = messageStructureList.size();
         boolean duplicate = false;
         if( listSize > 0 && messageStructureList.get(listSize-1) instanceof FlowPane ) {
-            Node qqq = searchForMetaData( (Pane)messageStructureList.get(listSize-1), OpenFileItem.class );
+            Node qqq = searchForMetaData( (Pane)messageStructureList.get(listSize-1), FileItem.class );
             // delete duplicated files
             Set<String> addedFilesPathList = ((Pane) qqq).getChildren().stream()
-                    .map(x->((OpenFileItem)x.getUserData()).getFilePath())
+                    .map(x->((FileItem)x.getUserData()).getFilePath())
                     .collect(Collectors.toSet());
 
             for (int i = 0; i < listOfFiles.size(); i++) {
-                String newNodeFilePath = ((OpenFileItem) listOfFiles.get(i).getUserData()).getFilePath();
+                String newNodeFilePath = ((FileItem) listOfFiles.get(i).getUserData()).getFilePath();
                 if( addedFilesPathList.add(newNodeFilePath) ) {
                     ((Pane) messageStructureList.get(listSize-1)).getChildren().add(listOfFiles.get(i));
                 }

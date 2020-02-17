@@ -1,67 +1,75 @@
 package chat.ItemsMetaDataPackage;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Component
+@Scope("prototype")
 @Entity
 @Table
 public class FileDataNew {
 
-    transient Path path;
-    transient BasicFileAttributes basicFileAttributes;
+    transient private Path path;
+    transient private BasicFileAttributes basicFileAttributes;
+    @Value("${constant.filePathRepoWindows : default value}")
+    private String filePathRepoWindows;
+    @Value("${constant.filePathRepoLinux : default value}")
+    private String filePathRepoLinux;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    int id;
-    String fileNameOriginal;
-    String filePathOriginal;
-    String fileNameRepo;
-    String filePathRepo;
-    String uuidMessageString;
-    UUID uuidMessage;
-    byte[] imageByteArray;
-    String creationTime;
-    String modifyingTime;
+    private int id;
+    private String fileNameOriginal;
+    private String filePathOriginal;
+    private String fileNameRepo;
+    private String filePathRepo;
+    private String uuidMessageString;
+    private UUID uuidMessage;
+    private byte[] imageByteArray = null;
+    private String creationTime;
+    private String modifyingTime;
 
     public FileDataNew() {
-        this.fileNameOriginal = path.getFileName().toString();
-        this.filePathOriginal = path.getParent().toString();
-
-        
-
-        try(FileInputStream inputStream = new FileInputStream("/home/kolka/Downloads/foto.png")) {
-            byte[] img = new byte[inputStream.available()];
-            inputStream.read(img);
-            imageByteArray = img;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public FileDataNew(Path path) {
+    public void setPath(Path path) {
         this.path = path;
-        BasicFileAttributes attr;
         try {
             basicFileAttributes = Files.readAttributes(path, BasicFileAttributes.class);
-            creationTime = basicFileAttributes.creationTime();
-            modifyingTime = basicFileAttributes.lastModifiedTime();
+            creationTime = basicFileAttributes.creationTime().toString();
+            modifyingTime = basicFileAttributes.lastModifiedTime().toString();
             fileNameOriginal = path.getFileName().toString();
-            filePathOriginal = path.toString();
+            filePathOriginal = path.getParent().toString();
+            uuidMessage = UUID.randomUUID();
+            uuidMessageString = uuidMessage.toString();
+            fileNameRepo = uuidMessageString;
+            defineTempFolder();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: Rewrite exception handler
         }
     }
 
+    public void setImageByteArray(byte[] imageByteArray) {
+        this.imageByteArray = imageByteArray;
+    }
+
+    private void defineTempFolder() {
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.startsWith("windows")) {
+            filePathRepo = filePathRepoWindows;
+        } else if (os.equals("linux")) {
+            filePathRepo = filePathRepoLinux;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,51 +86,4 @@ public class FileDataNew {
     public int hashCode() {
         return Objects.hash(fileNameOriginal, filePathOriginal, creationTime, modifyingTime);
     }
-
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
-    String fileName;
-    String filePath;
-
-
-    public FileData() {
-        this.fileName = "fileName";
-        this.filePath = "filePath";
-    }
-
-
-
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    /*public FileTime getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(FileTime creationTime) {
-        this.creationTime = creationTime;
-    }
-
-    public FileTime getModifyingTime() {
-        return modifyingTime;
-    }
-
-    public void setModifyingTime(FileTime modifyingTime) {
-        this.modifyingTime = modifyingTime;
-    }*/
 }
