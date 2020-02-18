@@ -4,17 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 public class FileItem implements ItemsMetaData, MessageItemInterface {
 
     final String description = "Container";
     private Path path;
     private FileData fileData;
+    private UUID uuidMessage = UUID.randomUUID(); //TODO: Create setter method
 
     @Autowired
     FileDataNew fileDataNew;
+    @Autowired
+    MessageItemData messageItemData;
 
     public FileItem(Path path) {
         this.path = path;
@@ -57,6 +59,12 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
         fileDataNew.setPath(path);
         fileDataNew.setImageByteArray(null); //TODO: Add image data
 
+        messageItemData.setChatName("Chat 55");
+        messageItemData.setSender("Me");
+        Calendar  calendar = new GregorianCalendar();
+        messageItemData.setTimeOfMessage( calendar.getTime().toString() );
+        messageItemData.setUuidMessage(uuidMessage);
+        messageItemData.setValue("File");
     }
 
     @Override

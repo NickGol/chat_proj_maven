@@ -1,6 +1,7 @@
 package chat.client;
 
 import chat.ItemsMetaDataPackage.FileData;
+//import chat.ItemsMetaDataPackage.FileDataNew;
 import com.zaxxer.hikari.HikariDataSource;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,6 +18,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -44,6 +46,8 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
     VBox userFriendsItemsContainer;
     ScrollPane userFriendsItemsScrollPane;
 
+    @Value("${ui.title1:JavaFX приложение}")//
+    private String windowTitle;
 
     @Bean
     @ConfigurationProperties("app.datasource")
@@ -53,6 +57,8 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
 
     @PostConstruct
     private  void printFunction() {
+
+        //FileDataNew fileDataNew = new FileDataNew();
         System.out.println( System.getProperty("java.class.path") );
         System.out.println("Post Construct");
         System.out.println("Post Construct");

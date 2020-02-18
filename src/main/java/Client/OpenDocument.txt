@@ -1,0 +1,30 @@
+
+
+			
+			MessageItem
+Text		 			File
+TextItem(MessageItemInterface)		FileItem (ItemsMetaData, MessageItemInterface)
+						FileDataNew (Table Entity with data about file)
+						MessageItemData (Table Entity with data about each part 
+								of each item of message, that can be used 
+								to find and recover all data)
+
+FileDataNew (Data for table)			
+	int id; (inside message)
+	String fileNameOriginal;
+	String filePathOriginal;
+	String fileNameRepo;
+	String filePathRepo;
+	String uuidMessageString;
+	UUID uuidMessage;
+	byte[] imageByteArray = null;
+	String creationTime;
+	String modifyingTime;
+
+MessageItemData (Data for table)
+	UUID uuidMessage;
+	UUID uuidMessageItem;
+	String timeOfMessage;
+	String value
+	String chatName;
+	String sender;

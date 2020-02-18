@@ -1,5 +1,11 @@
 package chat.ItemsMetaDataPackage;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import java.io.*;
 import java.nio.file.Files;
@@ -9,6 +15,8 @@ import java.nio.file.attribute.FileTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Component
+@Scope(value = "prototype")
 @Entity
 @Table
 public class FileData {
@@ -25,9 +33,14 @@ public class FileData {
     UUID uuid = UUID.randomUUID();
     String uuidString = uuid.toString();
     byte[] imageByteArray;
+
+    @Value("${ui.title:JavaFX приложение}")//
+    private String windowTitle;
+
     transient FileTime creationTime;
     transient FileTime modifyingTime;
 
+    //@PostConstruct
     public FileData() {
         this.fileName = "fileName";
         this.filePath = "filePath";

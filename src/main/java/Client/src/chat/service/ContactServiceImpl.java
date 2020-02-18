@@ -27,6 +27,11 @@ public class ContactServiceImpl implements ContactService {
         this.repository = repository;
     }
 
+    @Autowired
+    FileData fileData;
+    @Autowired
+    FileData fileData1;
+
     /**
      * Метод добавляет парочку записей в БД после запуска приложения,
      * чтобы не было совсем пусто.
@@ -35,6 +40,9 @@ public class ContactServiceImpl implements ContactService {
      */
     @PostConstruct
     public void generateTestData() {
+
+        save(fileData);
+        save(fileData1);
         save(new FileData());
         save(new FileData());
     }

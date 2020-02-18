@@ -1,6 +1,6 @@
 package chat.client;
 
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -108,7 +108,7 @@ public class MessageBuilder {
         }
     }
 
-    private Node searchForMetaData(@NotNull Pane root, @NotNull Class<? extends ItemsMetaData> clazz) {
+    private Node searchForMetaData(/*@NotNull */Pane root, /*@NotNull */Class<? extends ItemsMetaData> clazz) {
         if( root != null && clazz != null ) {
             if(  root.getUserData()!=null && clazz.isAssignableFrom( root.getUserData().getClass() )  ) {
                 System.out.println("Item was founded");
