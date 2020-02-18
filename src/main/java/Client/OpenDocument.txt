@@ -28,3 +28,10 @@ MessageItemData (Data for table)
 	String value
 	String chatName;
 	String sender;
+
+
+
+
+ImageView -> FileData( path ); !!! FileItem( path ) !!! //TODO: Create interface with open function
+deleteLabel -> DeleteItem( itemExternalÑontainer );
+flowPane -> ContainerItem();

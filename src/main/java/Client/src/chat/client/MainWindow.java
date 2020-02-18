@@ -1,7 +1,7 @@
 package chat.client;
 
 import chat.ItemsMetaDataPackage.FileData;
-//import chat.ItemsMetaDataPackage.FileDataNew;
+//import chat.ItemsMetaDataPackage.FileData;
 import com.zaxxer.hikari.HikariDataSource;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -58,7 +58,7 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
     @PostConstruct
     private  void printFunction() {
 
-        //FileDataNew fileDataNew = new FileDataNew();
+        //FileData fileDataNew = new FileData();
         System.out.println( System.getProperty("java.class.path") );
         System.out.println("Post Construct");
         System.out.println("Post Construct");

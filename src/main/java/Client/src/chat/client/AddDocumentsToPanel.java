@@ -1,6 +1,7 @@
 package chat.client;
 
 import chat.ItemsMetaDataPackage.DeleteItem;
+import chat.ItemsMetaDataPackage.FileData;
 import chat.ItemsMetaDataPackage.FileItem;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
@@ -73,7 +74,8 @@ public class AddDocumentsToPanel {
                 //selectImageToShow(file);
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
                 //vBox.setUserData(new FileData(path, file));
-                vBox.setUserData( new FileItem(path) );
+                //vBox.setUserData( new FileData(path) );
+                //vBox.setUserData( new FileItem(path, repository) );
                 list.add(vBox);
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }

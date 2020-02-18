@@ -14,12 +14,20 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
     private UUID uuidMessage = UUID.randomUUID(); //TODO: Create setter method
 
     @Autowired
-    FileDataNew fileDataNew;
+    private FileDataNewRepository fileDataNewRepository;
+    @Autowired
+    private MessageItemDataRepository messageItemDataRepository;
+
+
+    @Autowired
+    FileData fileDataNew;
     @Autowired
     MessageItemData messageItemData;
 
-    public FileItem(Path path) {
+    //@Autowired
+    public FileItem(Path path/*, FileDataNewRepository repository*/) {
         this.path = path;
+        /*this.fileDataNewRepository = repository;*/
     }
 
     public String getDescription() {
@@ -58,6 +66,7 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
     public void saveToDataBase() {
         fileDataNew.setPath(path);
         fileDataNew.setImageByteArray(null); //TODO: Add image data
+        fileDataNewRepository.save(fileDataNew);
 
         messageItemData.setChatName("Chat 55");
         messageItemData.setSender("Me");
@@ -65,6 +74,7 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
         messageItemData.setTimeOfMessage( calendar.getTime().toString() );
         messageItemData.setUuidMessage(uuidMessage);
         messageItemData.setValue("File");
+        messageItemDataRepository.save(messageItemData);
     }
 
     @Override
