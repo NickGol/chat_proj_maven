@@ -13,7 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +44,7 @@ view VBox
 @Component
 public class AddDocumentsToPanel {
 
-    FileItem fileItem;
+    //FileItem fileItem;
 
     FileChooser fileChooser;
     List<File> selectedFiles;
@@ -58,6 +62,9 @@ public class AddDocumentsToPanel {
     }
 
     public List<Node> selectFiles() throws MalformedURLException {
+
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(ConfigurationClass.class);
+
         List<Node> list = new LinkedList<>();
         Node vBox = null;
         Path path = null;
@@ -81,9 +88,9 @@ public class AddDocumentsToPanel {
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
                 //vBox.setUserData(new FileData(path, file));
                 //vBox.setUserData( new FileData(path) );
-
+                FileItem fileItem = (FileItem) ctx.getBean("fileItemConfig", path);
                 fileItem.setPath(path);
-                vBox.setUserData( fileItem );
+                vBox.setUserData( new FileItem() );
                 list.add(vBox);
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }
