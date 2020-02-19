@@ -1,11 +1,14 @@
 package chat.ItemsMetaDataPackage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 
+@Component
 public class FileItem implements ItemsMetaData, MessageItemInterface {
 
     final String description = "Container";
@@ -25,6 +28,10 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
     MessageItemData messageItemData;
 
     //@Autowired
+
+    public FileItem() {
+    }
+
     public FileItem(Path path/*, FileDataNewRepository repository*/) {
         this.path = path;
         /*this.fileDataNewRepository = repository;*/
@@ -90,5 +97,9 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
     @Override
     public int hashCode() {
         return Objects.hash(description, path, fileData);
+    }
+
+    public void setPath(Path path) {
+        this.path = path;
     }
 }

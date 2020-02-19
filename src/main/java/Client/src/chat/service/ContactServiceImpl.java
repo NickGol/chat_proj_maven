@@ -29,8 +29,8 @@ public class ContactServiceImpl implements ContactService {
 
     @Autowired
     FileData fileData;
-    @Autowired
-    FileData fileData1;
+   /* @Autowired
+    FileData fileData1;*/
 
     /**
      * Метод добавляет парочку записей в БД после запуска приложения,
@@ -41,10 +41,10 @@ public class ContactServiceImpl implements ContactService {
     @PostConstruct
     public void generateTestData() {
 
-        save(fileData);
+        /*save(fileData);
         save(fileData1);
         save(new FileData());
-        save(new FileData());
+        save(new FileData());*/
     }
 
     @Override

@@ -15,10 +15,10 @@ import java.nio.file.attribute.FileTime;
 import java.util.Objects;
 import java.util.UUID;
 
-@Component
+/*@Component
 @Scope(value = "prototype")
 @Entity
-@Table
+@Table*/
 public class FileData1 {
 
     /*transient Path path;

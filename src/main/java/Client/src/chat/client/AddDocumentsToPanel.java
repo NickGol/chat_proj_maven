@@ -13,6 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -34,7 +37,10 @@ view VBox
                 IconView (Labeled)
             Label (close)
  */
+@Component
 public class AddDocumentsToPanel {
+
+    FileItem fileItem;
 
     FileChooser fileChooser;
     List<File> selectedFiles;
@@ -75,7 +81,9 @@ public class AddDocumentsToPanel {
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
                 //vBox.setUserData(new FileData(path, file));
                 //vBox.setUserData( new FileData(path) );
-                //vBox.setUserData( new FileItem(path, repository) );
+
+                fileItem.setPath(path);
+                vBox.setUserData( fileItem );
                 list.add(vBox);
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }

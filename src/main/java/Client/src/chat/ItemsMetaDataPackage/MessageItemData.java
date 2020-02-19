@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class MessageItemData {
 
     private UUID uuidMessage;
+    @Id
     private UUID uuidMessageItem = UUID.randomUUID();
     private String timeOfMessage;
     private String value;
