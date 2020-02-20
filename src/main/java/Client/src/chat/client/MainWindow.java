@@ -2,6 +2,7 @@ package chat.client;
 
 import chat.ItemsMetaDataPackage.FileData;
 //import chat.ItemsMetaDataPackage.FileData;
+import chat.ItemsMetaDataPackage.FileItem;
 import com.zaxxer.hikari.HikariDataSource;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,11 +19,14 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -31,6 +35,7 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.nio.file.Path;
 
 @SpringBootApplication(scanBasePackages = {"chat"})
 @ComponentScan(basePackages = { "chat" })
@@ -45,6 +50,7 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
     BorderPane border;
     VBox userFriendsItemsContainer;
     ScrollPane userFriendsItemsScrollPane;
+    //ApplicationContext ctx = new AnnotationConfigApplicationContext(ConfigurationClass.class);
 
     @Value("${ui.title1:JavaFX приложение}")//
     private String windowTitle;
@@ -55,10 +61,17 @@ public class MainWindow extends AbstractJavaFxApplicationSupport {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
+    @Autowired
+    FileData fileData1;
+
+    @Autowired
+    FileItem fileItem1;
+
     @PostConstruct
     private  void printFunction() {
 
         //FileData fileDataNew = new FileData();
+        //FileItem fileItem = (FileItem) ctx.getBean("fileItemConfig", new File("home").toPath() );
         System.out.println( System.getProperty("java.class.path") );
         System.out.println("Post Construct");
         System.out.println("Post Construct");

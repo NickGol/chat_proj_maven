@@ -16,9 +16,22 @@ public class FileItem implements ItemsMetaData, MessageItemInterface {
     private FileData fileData;
     private UUID uuidMessage = UUID.randomUUID(); //TODO: Create setter method
 
+
+    /*private FileDataNewRepository repository123;
+
+    @Autowired
+    public FileItem(FileDataNewRepository repository) {
+        this.repository123 = repository;
+    }*/
+
+    /*@Autowired
+    public void setFileDataNewRepository(FileDataNewRepository fileDataNewRepository) {
+        this.fileDataNewRepository = fileDataNewRepository;
+    }*/
+
     @Autowired
     private FileDataNewRepository fileDataNewRepository;
-    @Autowired
+    //@Autowired
     private MessageItemDataRepository messageItemDataRepository;
 
 

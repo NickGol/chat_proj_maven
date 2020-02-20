@@ -1,5 +1,6 @@
 package chat.ItemsMetaDataPackage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,15 +15,18 @@ import java.util.UUID;
 
 @Component
 @Scope("prototype")
+
 @Entity
 @Table
 public class FileData {
 
+    @Autowired
+    TextItem textItem;
     transient private Path path;
     transient private BasicFileAttributes basicFileAttributes;
-    @Value("${constant.filePathRepoWindows : default value}")
+    @Value("${constant.filePathRepoWindows:default value}")//
     private String filePathRepoWindows;
-    @Value("${constant.filePathRepoLinux : default value}")
+    @Value("${constant.filePathRepoLinux:default value}")
     private String filePathRepoLinux;
 
     @Id

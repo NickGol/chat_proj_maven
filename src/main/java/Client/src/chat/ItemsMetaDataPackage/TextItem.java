@@ -1,18 +1,21 @@
 package chat.ItemsMetaDataPackage;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Objects;
 
+@Component
 public class TextItem implements ItemsMetaData, MessageItemInterface {
 
     final String description = "Container";
     private Path path;
     private FileData fileData;
 
-    public TextItem(Path path) {
-        this.path = path;
+    public TextItem() {
+        this.path = null;
     }
 
     public String getDescription() {

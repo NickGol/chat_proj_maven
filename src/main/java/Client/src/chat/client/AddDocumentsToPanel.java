@@ -63,7 +63,7 @@ public class AddDocumentsToPanel {
 
     public List<Node> selectFiles() throws MalformedURLException {
 
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(ConfigurationClass.class);
+        //ApplicationContext ctx = new AnnotationConfigApplicationContext(ConfigurationClass.class);
 
         List<Node> list = new LinkedList<>();
         Node vBox = null;
@@ -88,10 +88,10 @@ public class AddDocumentsToPanel {
                 vBox = wrapInVBox(file, loadUserPhoto(selectImageToShow(file)));
                 //vBox.setUserData(new FileData(path, file));
                 //vBox.setUserData( new FileData(path) );
-                FileItem fileItem = (FileItem) ctx.getBean("fileItemConfig", path);
+                /*FileItem fileItem = (FileItem) ctx.getBean("fileItemConfig", path);
                 fileItem.setPath(path);
                 vBox.setUserData( new FileItem() );
-                list.add(vBox);
+                list.add(vBox);*/
                 //list.add(  wrapInVBox( file, loadUserPhoto( selectImageToShow(file) ) )  );
             }
         }
